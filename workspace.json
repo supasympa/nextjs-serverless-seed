@@ -1,0 +1,103 @@
+{
+  "version": 2,
+  "projects": {
+    "nx-nextjs-serverless-seed": {
+      "root": "apps/nx-nextjs-serverless-seed",
+      "sourceRoot": "apps/nx-nextjs-serverless-seed",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "root": "apps/nx-nextjs-serverless-seed",
+            "outputPath": "dist/apps/nx-nextjs-serverless-seed"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "nx-nextjs-serverless-seed:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "nx-nextjs-serverless-seed:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "nx-nextjs-serverless-seed:build:production"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/nx-nextjs-serverless-seed"],
+          "options": {
+            "jestConfig": "apps/nx-nextjs-serverless-seed/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/nx-nextjs-serverless-seed/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        }
+      }
+    },
+    "nx-nextjs-serverless-seed-e2e": {
+      "root": "apps/nx-nextjs-serverless-seed-e2e",
+      "sourceRoot": "apps/nx-nextjs-serverless-seed-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/nx-nextjs-serverless-seed-e2e/cypress.json",
+            "tsConfig": "apps/nx-nextjs-serverless-seed-e2e/tsconfig.e2e.json",
+            "devServerTarget": "nx-nextjs-serverless-seed:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "nx-nextjs-serverless-seed:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/nx-nextjs-serverless-seed-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/next"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "@emotion/styled",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "nx-nextjs-serverless-seed"
+}
