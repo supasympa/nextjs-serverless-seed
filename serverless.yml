@@ -1,0 +1,12 @@
+org: supasympa
+service: nextjs-seed
+
+frameworkVersion: '2'
+
+nextJsSeedApp:
+  component: "@sls-next/serverless-component@3.1.0"
+  inputs: 
+    nextConfigDir: "./apps/nx-nextjs-serverless-seed"
+    build: 
+      cwd: "./apps/nx-nextjs-serverless-seed"
+      cmd: "../../node_modules/.bin/next"
