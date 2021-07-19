@@ -37,3 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+serverless.yml
+apps/nx-nextjs-serverless-seed/.next/
+apps/nx-nextjs-serverless-seed/.serverless_nextjs
+.serverless
