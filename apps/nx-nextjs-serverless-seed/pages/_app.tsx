@@ -11,7 +11,6 @@ function CustomApp({ Component, pageProps }: AppProps) {
       </Head>
       <div className="app">
         <header className="flex">
-          <NxLogo width="75" height="50" />
           <h1>Welcome to nx-nextjs-serverless-seed!</h1>
         </header>
         <main>
